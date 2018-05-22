@@ -16,6 +16,7 @@ public class PdfGeneration {
         try {
             PdfWriter.getInstance(document, new FileOutputStream(fileName + ".pdf"));
             document.open();
+            //the following block occurs exception, I don;t know why
 //            Image image = Image.getInstance((getClass().getResource("/logo.jpg")));
 //            image.scaleToFit(200, 86);
 //            image.setAbsolutePosition(200f, 750f);

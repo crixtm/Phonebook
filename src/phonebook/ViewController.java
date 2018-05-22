@@ -127,13 +127,12 @@ public class ViewController implements Initializable {
         TreeItem<String> contactsNode = new TreeItem<>(MENU_CONTACTS);
         contactsNode.setExpanded(true);
         TreeItem<String> exitNode = new TreeItem<>(MENU_EXIT);
-        
+        //this block should add images to menu
         Node contactImageNode = new ImageView(new Image(getClass().getResourceAsStream("/contacts.png")));
         Node exportImageNode = new ImageView(new Image(getClass().getResourceAsStream("/export.png")));
-        
         TreeItem<String> listContactsNode = new TreeItem<>(MENU_LIST, contactImageNode);
         TreeItem<String> exportContactsNode = new TreeItem<>(MENU_EXPORT, exportImageNode);
-        
+        //but nothing happen
         contactsNode.getChildren().addAll(listContactsNode, exportContactsNode);
         treeItemRoot1.getChildren().addAll(contactsNode, exitNode);
         menuPane.getChildren().add(treeView);
