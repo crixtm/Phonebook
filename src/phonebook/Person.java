@@ -44,5 +44,11 @@ public class Person {
     public void setEmail(String email) {
         this.email.set(email);
     }
+
+    @Override
+    public String toString() {
+        return "First Name: " + firstName.getValue()+ ", Last Name: " + lastName.getValue() + ", Email:" + email.getValue();
+    }
+    
     
 }

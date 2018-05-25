@@ -52,8 +52,8 @@
                   </Pane>
                   <Pane id="exportPane" fx:id="exportPane" prefHeight="586.0" prefWidth="451.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
-                        <Button id="exportButton" fx:id="exportButton" layoutX="174.0" layoutY="215.0" mnemonicParsing="false" text="Save the PDF" />
-                        <TextField id="exportFileName" fx:id="exportFileName" layoutX="142.0" layoutY="176.0" />
+                        <Button id="exportButton" fx:id="exportButton" onAction="#exportPDF" layoutX="174.0" layoutY="215.0" mnemonicParsing="false" text="Save the PDF" />
+                        <TextField id="exportFileNameInput" fx:id="exportFileNameInput" layoutX="142.0" layoutY="176.0" />
                         <Label layoutX="189.0" layoutY="30.0" text="Export to PDF" />
                      </children></Pane>
                </children>
