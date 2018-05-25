@@ -19,7 +19,9 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -55,7 +57,7 @@ public class ViewController implements Initializable {
     @FXML
     Pane exportPane;
     @FXML
-    TextField exportFileName;
+    TextField exportFileNameInput;
     @FXML
     Button exportButton;
     
@@ -193,14 +195,36 @@ public class ViewController implements Initializable {
         
     }
     
-     
+    @FXML
+    private void exportPDF(ActionEvent event) {
+        PDFGenerator generator = new PDFGenerator();
+        boolean success = generator.export(exportFileNameInput.getText(), collectContacts());
+        
+        if (success) {
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "PDF exported", ButtonType.OK);            
+            alert.showAndWait();
+        } else {
+            Alert alert = new Alert(Alert.AlertType.ERROR, "PDF export failed, please see log for details.", ButtonType.OK);
+            alert.showAndWait();
+        }
+    }
+    
+    final private String LB = "\n";
+    
+    private String collectContacts() {
+        StringBuilder sb = new StringBuilder("Contacts" + LB);
+        data.stream().forEach(person -> {
+            sb.append(person.toString());
+            sb.append(LB);
+        });
+        
+        return sb.toString();
+    }
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         setTableData();
-        setMenuData();
-        PdfGeneration pdfCreator = new PdfGeneration();
-        pdfCreator.pdfGeneration(exportFileName.getText(), "test text");
+        setMenuData();       
     }
 
     
